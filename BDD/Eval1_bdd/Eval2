@@ -1,0 +1,38 @@
+L'association "Passe" disparais et les tables sont maintenant relier grâce a la clé primaire "num_client" de la table client et la clé etrangère, "num_client" de la table Commande.
+
+L'association "Se_compose_de" et devenu une nouvelle table avec 2 clés primaires, "num_commande" et "num_article" et sers a faire le lien entre les tables "Commande" et "Article".
+
+--Script de création de bdd--
+
+CREATE TABLE Client(
+   num_client INT AUTO_INCREMENT,
+   nom_client VARCHAR(50) ,
+   prenom_client VARCHAR(50) ,
+   PRIMARY KEY(num_client)
+);
+
+CREATE TABLE Commande(
+   num_commande INT AUTO_INCREMENT,
+   date_commande DATE,
+   montant_commande DECIMAL(19,4),
+   num_client INT NOT NULL,
+   PRIMARY KEY(num_commande),
+   FOREIGN KEY(num_client) REFERENCES Client(num_client)
+);
+
+CREATE TABLE Article(
+   num_article VARCHAR(50) ,
+   designation_article VARCHAR(50) ,
+   pu_article DECIMAL(19,4),
+   PRIMARY KEY(num_article)
+);
+
+CREATE TABLE Se_compose_de(
+   num_commande INT,
+   num_article VARCHAR(50) ,
+   qte INT,
+   taux_tva DECIMAL(4,2)  ,
+   PRIMARY KEY(num_commande, num_article),
+   FOREIGN KEY(num_commande) REFERENCES Commande(num_commande),
+   FOREIGN KEY(num_article) REFERENCES Article(num_article)
+);
