@@ -1,0 +1,1 @@
+On commence par peupler la table 'fournis', ensuite on s'occupe de la table 'entcom' car elle a besoin de mettre des numeros de fournisseurs en clé etrangere. Et on termine par la table 'ligcom' pour les mêmes raison.

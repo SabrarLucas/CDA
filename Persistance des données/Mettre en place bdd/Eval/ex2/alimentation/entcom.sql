@@ -1,0 +1,11 @@
+INSERT INTO entcom (numcom, obscom, datcom, numfou)
+VALUES (70010, NULL, 20070210, 00120),
+(70011, 'Commande urgente', 20070301, 00540),
+(70020, NULL, 20070425, 09180),
+(70025, 'Commande urgente', 20070430, 09150),
+(70210, 'Commande cadencée', 20070505, 00120),
+(70300, NULL, 20070606, 09120),
+(70250, 'Commande cadencée', 20071002, 08700),
+(70620, NULL, 20071002, 00540),
+(70625, NULL, 20071009, 00120),
+(70629, NULL ,20071012, 09180)
