@@ -30,14 +30,14 @@
 	
 -- 6. Afficher le nom, le numéro d'employé et le numéro du département des employés dont le titre est « Secrétaire ». 
 
-	SELECT nom, prenom, nodep,
+	SELECT nom, noemp, nodep
 	FROM employe
 	WHERE titre = 'Secrétaire'
 	
 
 -- 7. Afficher le nom et le numéro de département dont le numéro de département est supérieur à 40.
 	
-	SELECT nom, prenom, nodep
+	SELECT nom, nodep
 	FROM employe
 	WHERE nodep > 40
 	
@@ -74,14 +74,14 @@
 
 	SELECT nom, titre, nodep, salaire
 	FROM employe
-	WHERE (titre = 'Représentant' OR titre = 'Scrétaire') AND nodep = 34
+	WHERE (titre = 'Représentant' OR titre = 'Secrétaire') AND nodep = 34
 	
 
 -- 13. Afficher le nom, et le salaire des employés dont le salaire est compris entre 20000 et 30000.
 
 	SELECT nom, salaire
 	FROM employe
-	WHERE salaire BETWEEN 2000 AND 3000
+	WHERE salaire BETWEEN 20000 AND 30000
 	
 	
 -- 15. Afficher le nom des employés commençant par la lettre « H ».
@@ -178,48 +178,33 @@
 	ORDER BY tauxcom ASC
 	
 	
+-- 28. Afficher le nom et le prénom (concaténés) des employés. Renommer les colonnes
+
+	SELECT CONCAT(nom, " ", prenom) AS Employés
+	FROM employe
 	
 	
+-- 29. Afficher les 5 premières lettres du nom des employés
+
+	SELECT SUBSTRING(nom, 1, 5)
+	FROM employe
 	
 	
+-- 30. Afficher le nom et le rang de la lettre « r » dans le nom des employés.
+
+	SELECT nom, LOCATE('r', nom)
+	FROM employe
+	WHERE nom LIKE '%r%'
 	
+
+-- 31. Afficher le nom, le nom en majuscule et le nom en minuscule de l'employé dont le nom est Vrante. 
+
+	SELECT nom, UPPER(nom), LOWER(nom)
+	FROM employe
+	WHERE nom = 'Vrante'
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+-- 32. Afficher le nom et le nombre de caractères du nom des employés.
+
+	SELECT nom, LENGTH(nom) AS nombre_cara
+	FROM employe
