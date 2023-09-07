@@ -91,37 +91,3 @@ SHOW CREATE PROCEDURE CA_Fournisseur;
 
 
 CA_Fournisseur	STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_...	CREATE DEFINER=`admin`@`localhost` PROCEDURE `CA_Fournisseur`	utf8mb4	utf8mb4_unicode_ci	utf8mb4_general_ci	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
