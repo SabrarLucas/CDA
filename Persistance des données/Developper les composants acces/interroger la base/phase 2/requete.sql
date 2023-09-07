@@ -45,21 +45,21 @@
 
 	SELECT sta_nom, hot_nom, hot_categorie, hot_ville
 	FROM hotel
-	JOIN station ON sta_id
+	JOIN station ON sta_id = hotel.hot_sta_id
 
 
 -- 8 - Afficher la liste des chambres et leur hôtel Le résultat doit faire apparaître le nom de l’hôtel, la catégorie, la ville, le numéro de la chambre)
 
 	SELECT	hot_nom, hot_categorie, hot_ville, cha_numero
 	FROM hotel
-	JOIN chambre ON cha_hot_id
+	JOIN chambre ON cha_hot_id = hotel.hot_id
 
 
 -- 9 - Afficher la liste des chambres de plus d'une place dans des hôtels situés sur la ville de Bretou Le résultat doit faire apparaître le nom de l’hôtel, la catégorie, la ville, le numéro de la chambre et sa capacité)
 
 	SELECT hot_nom, hot_categorie, hot_ville, cha_numero, cha_capacite 
 	FROM hotel
-	JOIN chambre ON chambre.cha_hot_id 
+	JOIN chambre ON chambre.cha_hot_id = hotel.hot_id
 	WHERE hot_ville = 'Bretou' AND cha_capacite > 1
 
 
@@ -67,26 +67,26 @@
 
 	SELECT cli_nom, hot_nom, res_date
 	FROM client
-	JOIN reservation ON reservation.res_cli_id 
-	JOIN chambre ON chambre.cha_id 
-	JOIN hotel ON hotel.hot_id 
+	JOIN reservation ON reservation.res_cli_id = client.cli_id
+	JOIN chambre ON chambre.cha_id = reservation.res_cha_id
+	JOIN hotel ON hotel.hot_id = chambre.cha_hot_id
 
 
 -- 11 - Afficher la liste des chambres avec le nom de l’hôtel et le nom de la station Le résultat doit faire apparaître le nom de la station, le nom de l’hôtel, le numéro de la chambre et sa capacité)
 
 	SELECT sta_nom, hot_nom, cha_numero, cha_capacite
 	FROM chambre
-	JOIN hotel ON hotel.hot_id
-	JOIN station ON station.sta_id
+	JOIN hotel ON hotel.hot_id = chambre.cha_hot_id
+	JOIN station ON station.sta_id = hotel.hot_sta_id
 
 
 -- 12 - Afficher les réservations avec le nom du client et le nom de l’hôtel Le résultat doit faire apparaître le nom du client, le nom de l’hôtel, la date de début du séjour et la durée du séjour
 
 	SELECT cli_nom, hot_nom, res_date_debut, DATEDIFF(res_date_fin, res_date_debut) AS duree_sejour
 	FROM client
-	JOIN reservation ON reservation.res_cli_id
-	JOIN chambre ON chambre.cha_id
-	JOIN hotel ON hotel.hot_id
+	JOIN reservation ON reservation.res_cli_id = client.cli_id
+	JOIN chambre ON chambre.cha_id = reservation.res_cha_id
+	JOIN hotel ON hotel.hot_id = chambre.cha_id
 	
 
 -- LOT 3 --
@@ -94,7 +94,7 @@
 
 	SELECT sta_nom, COUNT(hotel.hot_sta_id) AS 'Nb hotel' 
 	FROM station
-	JOIN hotel ON hotel.hot_sta_id
+	JOIN hotel ON hotel.hot_sta_id = station.sta_id
 	GROUP BY sta_nom
 
 
@@ -102,8 +102,8 @@
 
 	SELECT sta_nom, COUNT(chambre.cha_id) AS 'Nb chambre'
 	FROM station
-	JOIN hotel ON hotel.hot_sta_id
-	JOIN chambre ON chambre.cha_hot_id
+	JOIN hotel ON hotel.hot_sta_id = station.sta_id
+	JOIN chambre ON chambre.cha_hot_id = hotel.hot_id
 	GROUP BY sta_nom
 
 
@@ -111,8 +111,8 @@
 
 	SELECT sta_nom, COUNT(chambre.cha_id) AS 'Nb chambre'
 	FROM station
-	JOIN hotel ON hotel.hot_sta_id
-	JOIN chambre ON chambre.cha_hot_id
+	JOIN hotel ON hotel.hot_sta_id = station.sta_id
+	JOIN chambre ON chambre.cha_hot_id = hotel.hot_id
 	WHERE cha_capacite > 1
 	GROUP BY sta_nom
 

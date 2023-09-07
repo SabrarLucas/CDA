@@ -68,25 +68,23 @@
 
 	SELECT numcom, nomfou, datcom
 	FROM entcom
-	JOIN fournis ON fournis.numfou
+	JOIN fournis ON fournis.numfou = entcom.numfou
 
 
 -- 11. Sortir les produits des commandes ayant le mot "urgent' en observation? (Afficher le numéro de commande, le nom du fournisseur, le libellé du produit et le sous total = quantité commandée * Prix unitaire)
 
-	SELECT entcom.numcom, nomfou, libart, SUM(qtecde*priuni) AS 'Total commande'
-	FROM entcom
-	JOIN fournis ON fournis.numfou
-	JOIN ligcom ON ligcom.numcom
-	JOIN produit ON produit.codart
-	WHERE obscom LIKE '%urgent%'
-	GROUP BY entcom.numcom
+	SELECT produit.codart, produit.libart
+	FROM produit
+        INNER JOIN ligcom ON produit.codart = ligcom.codart
+        INNER JOIN entcom ON ligcom.numcom = entcom.numcom
+	WHERE entcom.obscom LIKE '%urgent%';
 
 
 -- 12. Coder de 2 manières différentes la requête suivante : Lister le nom des fournisseurs susceptibles de livrer au moins un article
 
 	SELECT nomfou, COUNT(codart) AS 'code art'
 	FROM fournis
-	JOIN vente ON vente.numfou
+	JOIN vente ON vente.numfou = fournis.numfou
 	GROUP BY fournis.numfou
 
 
@@ -102,7 +100,7 @@
 
 	SELECT libart, prix1
 	FROM vente
-	JOIN produit ON produit.codart
+	JOIN produit ON produit.codart = vente.codart
 	WHERE libart LIKE 'R%'
 
 
@@ -110,8 +108,8 @@
 
 	SELECT produit.codart, fournis.numfou, nomfou 
 	FROM fournis
-	JOIN vente ON vente.numfou
-	JOIN produit ON produit.codar
+	JOIN vente ON vente.numfou = fournis.numfou
+	JOIN produit ON produit.codart = vente.codart
 	WHERE  stkphy  <= (stkale * 150 / 100)
 	ORDER BY produit.codart, fournis.numfou
 
@@ -120,8 +118,8 @@
 
 	SELECT produit.codart, fournis.numfou, nomfou 
 	FROM fournis
-	JOIN vente ON vente.numfou
-	JOIN produit ON produit.codart
+	JOIN vente ON vente.numfou = fournis.numfou
+	JOIN produit ON produit.codart = vente.codart
 	WHERE  stkphy  <= (stkale * 150 / 100) and vente.delliv < 31
 	ORDER BY produit.codart, fournis.numfou
 
@@ -130,8 +128,8 @@
 
 	SELECT fournis.numfou, vente.codart, nomfou, sum(stkphy) AS 'total stocks'
 	FROM fournis
-	JOIN vente ON vente.numfou
-	JOIN produit ON produit.codart
+	JOIN vente ON vente.numfou = fournis.numfou
+	JOIN produit ON produit.codart = vente.codart
 	WHERE vente.delliv  < 31 and  stkphy  <= (stkale * 150 / 100)
 	GROUP BY fournis.numfou, vente.codart, nomfou
 	ORDER BY sum(stkphy) desc
@@ -141,7 +139,7 @@
 
 	SELECT ligcom.codart, SUM(qtecde)
 	FROM ligcom
-	JOIN produit ON produit.codart
+	JOIN produit ON produit.codart = ligcom.codart
 	WHERE qtecde >= (qteann * 90 / 100)
 	GROUP BY codart
 
@@ -151,7 +149,7 @@
 
 	SELECT fournis.numfou, nomfou, SUM(qtecde * priuni * 1.2)   
 	FROM fournis
-	JOIN entcom ON entcom.numfou
-	JOIN ligcom ON ligcom.numcom
+	JOIN entcom ON entcom.numfou = fournis.numfou
+	JOIN ligcom ON ligcom.numcom = entcom.numcom
 	WHERE YEAR (datcom) = '2018'
 	GROUP BY fournis.numfou, nomfou
