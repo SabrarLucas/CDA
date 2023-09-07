@@ -36,9 +36,8 @@
 
 -- 6. Rechercher le nombre de titres différents. 
 
-	SELECT DISTINCT(titre), titre
+	SELECT COUNT(DISTINCT(titre)), titre
 	FROM employe
-	HAVING titre
 	
 	
 -- 7. Pour chaque titre, compter le nombre d'employés possédant ce titre. 
@@ -58,58 +57,17 @@
 	
 -- 9. Rechercher les titres et la moyenne des salaires par titre dont la moyenne est supérieure à la moyenne des salaires des Représentants.
 
-	SELECT titre, AVG(salaire) AS moyenne_salaire_titre
+	SELECT titre, AVG(salaire) AS moyenne_des_salaires
 	FROM employe
+	GROUP BY titre
 	HAVING AVG(salaire) > (
 		SELECT AVG(salaire)
 		FROM employe
-		WHERE titre = 'Représentant'
-	)
+		WHERE titre = 'représentant'
+	);
 	
+	
+-- 10. Rechercher le nombre de salaires renseignés et le nombre de taux de commission renseignés.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	SELECT COUNT(salaire), COUNT(tauxcom)
+	FROM employe
