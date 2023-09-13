@@ -1,0 +1,6 @@
+EX 1
+1. La modification de donnée c'est bien effectuer mais n'est pas permanente.
+2. Non elles ne sont pas modifiables par d'autres utilisateur.
+3. Non il faut la rendre permanente
+4. Pour la rendre permanente il faut utilisier l'instruction COMMIT
+5. Pour l'annuler il faut utiliser l'instruction ROLLBACK

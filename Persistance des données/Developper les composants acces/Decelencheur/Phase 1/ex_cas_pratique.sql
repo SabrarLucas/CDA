@@ -1,0 +1,1 @@
+-- 1 - Mettez en place ce trigger, puis ajoutez un produit dans une commande, vérifiez que le champ total est bien mis à jour.
