@@ -1,0 +1,9 @@
+1. En ingénierie logicielle, les pratiques agiles mettent en avant la collaboration entre des équipes auto-organisées et pluridisciplinaires et leurs clients. Elles s'appuient sur l'utilisation d'un cadre méthodologique léger mais suffisant centré sur l'humain et la communication. Elles préconisent une planification adaptative, un développement évolutif, une livraison précoce et une amélioration continue, et elles encouragent des réponses flexibles au changement.
+
+2. L'eXtreme Programming est une méthode agile pousser a l'extrême.
+
+3. L'avantage de SCRUM est de se rendre complte si il ya des problemes pendant un sprint de 2 ou 3 semaines, on ne perd alors que 2 ou 3 semaines et pas 6 mois ou 1 an comme c’est parfois le cas pour une organisation en projet plus classique.
+
+4. L’équipe travaille par courtes itérations (appelées aussi sprints) et affine son plan à mesure qu'elle avance dans son travail. Ces différents sprints ont une durée fixe, toujours identique, et fixée à l’origine du projet. Cela permet de connaître la vélocité de l’équipe et de pouvoir être toujours plus précis dans l’estimation du temps de réalisation d’une partie de l’application.
+
+5. C'est une méthodologie de développement logiciel pilotée par les tests, dans laquelle les développeurs corrigent les bugs au fur et à mesure de la programmation.
