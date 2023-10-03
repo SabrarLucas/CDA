@@ -1,0 +1,57 @@
+1. Les acteurs : 
+usager; employés; bénévoles.
+
+
+2. use case : 
+-usager :
+	un usager peut consulter les documents;
+		       emprunter des documents;
+	
+-emplpoyés :
+	un peu employé peut acheter des documents;
+			    inscrire de nouveaux usager;
+			    preter des documents aux usager;
+			    
+
+3. 	Titre du cas d'usage : Emprunt d'une ressource
+
+L'usager se présente à la bibliothèque avec l'intention d'emprunter une ressource, qu'il s'agisse d'un livre ou d'un CD-ROM.
+
+L'usager présente sa carte de lecteur au personnel de la bibliothèque.
+
+Le personnel de la bibliothèque utilise le système informatique pour vérifier si l'usager est à jour de sa cotisation et s'il respecte la limite de 5 emprunts simultanés.
+
+Si l'usager est en règle, le personnel de la bibliothèque enregistre l'emprunt en associant le numéro du lecteur, la côte de la ressource, et la date de l'emprunt dans le système.
+
+L'usager reçoit la ressource empruntée (livre ou CD-ROM) et peut la prendre avec lui.
+
+Le système génère une fiche de prêt pour cette transaction.
+
+	
+	Scénario alternatif 1 : Usager non à jour de sa cotisation
+
+Après avoir présenté sa carte de lecteur, le système détecte que l'usager n'est pas à jour de sa cotisation.
+
+Le personnel de la bibliothèque informe l'usager de sa situation et lui indique qu'il doit régler sa cotisation avant d'emprunter une ressource.
+
+L'usager peut choisir de régler sa cotisation sur place, après quoi il peut procéder à l'emprunt comme indiqué dans le scénario principal.
+
+	
+	Scénario alternatif 2 : Dépassement de la limite d'emprunts
+
+Le système détecte que l'usager a déjà atteint la limite de 5 emprunts simultanés.
+
+Le personnel de la bibliothèque informe l'usager qu'il ne peut pas emprunter de ressource supplémentaire tant qu'il n'aura pas retourné au moins une des ressources déjà empruntées.
+
+L'usager peut choisir de retourner une ou plusieurs ressources pour respecter la limite et ensuite emprunter la nouvelle ressource comme indiqué dans le scénario principal.
+
+	
+	Scénario alternatif 3 : Indisponibilité de la ressource
+
+L'usager souhaite emprunter une ressource, mais le système indique que la ressource est actuellement en cours d'emprunt par un autre usager.
+
+Le personnel de la bibliothèque informe l'usager que la ressource est temporairement indisponible et lui propose de la réserver s'il le souhaite.
+
+Si l'usager choisit de réserver la ressource, le système enregistre sa demande et l'avertit dès que la ressource sera de nouveau disponible.
+
+Si l'usager ne souhaite pas réserver la ressource, il peut choisir une autre ressource disponible ou revenir ultérieurement pour emprunter la ressource désirée lorsque celle-ci sera de nouveau disponible.
