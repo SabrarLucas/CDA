@@ -1,0 +1,17 @@
+Pour sauvegarder une base on peut utiliser la commande :
+	"mysqldump --user=xxx --password=xxx gescom > backup_bdd.sql"
+	
+Puis la restaurer grâce à :
+	"cat backup_gescom.sql | mysql --user=xxx --password=xxx new_bdd"
+	
+	
+Ou directement sur PHPMyAdmin en suivant ces étapes pour Sauvegarder :
+	1. Sélectionnez la base de données à sauvegarder
+	2. Cliquez sur l'onglet "Exporter" situé en haut de PHPMyAdmin
+	3. Cochez la case "Transmettre puis cliquez sur le "Exécuter"
+	
+Et pour importer : 
+	1. Sélectionnez la base de données à sauvegarder
+	2. Cliquez sur l'onglet "Importer" situé en haut de PHPMyAdmin
+	3. Cliquez sur "Parcourir..." et sélectionnez votre sauvegarde
+	4. Valider l'importation en cliquant sur "Executer"
